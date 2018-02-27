@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="cn.xswift.buy.mapper.IUserMapper">
+
+  <select id="selectUserById" parameterType="java.lang.Long" resultType="User">
+  	SELECT user_id AS 'userId',user_name AS 'userName',user_password AS 'userPassword',user_money AS 'userMoney',user_contactinfo AS 'userContactInfo' ,user_is_seller AS 'userIsSeller',user_addr AS 'userAddr' FROM `user` WHERE user_id=#{userId} and user_is_seller=0
+  </select>
+  <select id="selectUserByIdForSeller" parameterType="java.lang.Long" resultType="User">
+  	SELECT user_id AS 'userId',user_name AS 'userName',user_password AS 'userPassword',user_money AS 'userMoney',user_contactinfo AS 'userContactInfo' ,user_is_seller AS 'userIsSeller' FROM `user` WHERE user_id=#{userId}
+  </select>
+  <select id="selectUserNameById" parameterType="java.lang.Long" resultType="String">
+  	SELECT user_name from user where user_id = #{userId}
+  </select>
+  <select id="selectUserByName" parameterType="String" resultType="User">
+  	SELECT user_id AS 'userId',user_name AS 'userName',user_password AS 'userPassword',user_money AS 'userMoney',user_contactinfo AS 'userContactInfo' ,user_is_seller AS 'userIsSeller' FROM `user` WHERE user_name=#{userName} and user_is_seller=1
+  </select>
+  <insert id="insertUser"  parameterType="User" useGeneratedKeys="true" keyProperty="userId">
+  	INSERT INTO user (user_name,user_password,user_money,user_is_seller,user_contactinfo) VALUES(#{userName},#{userPassword},#{userMoney},#{userIsSeller},#{userContactInfo})
+  </insert>
+</mapper>

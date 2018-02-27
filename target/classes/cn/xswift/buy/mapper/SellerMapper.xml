@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="cn.xswift.buy.mapper.ISellerMapper">
+
+  <resultMap id="resultListSeller" type="Seller" >
+	<id column="user_id" property="sellerId"/>
+	<result column="user_name" property="sellerName"/>
+	<result column="user_contactinfo" property="sellerContactInfo"/>
+	<result column="seller_addr" property="sellerAddr"/>
+	<result column="seller_sellinfo" property="sellerSellInfo"/>
+	<result column="seller_status" property="sellerStatus"/>
+	<result column="seller_imgsrc" property="sellerImgsrc"/>
+  </resultMap>
+  
+  <select id="selectSellerById" resultType="Seller" parameterType="java.lang.Long">
+    select seller_id as sellerId,user_name as sellerName,seller_addr as sellerAddr,seller_sellinfo as sellerSellInfo,user_contactinfo as sellerContactInfo,seller_imgsrc as sellerImgsrc from seller,user where seller_id=#{sellerId}  AND user_id=#{sellerId}  
+  </select>
+  
+  <select id="selectSellerOpen" resultMap="resultListSeller">
+  	select user_id,user_name,user_contactinfo,seller_addr,seller_sellinfo,seller_status,seller_imgsrc from user,seller where `user`.user_is_seller=1 and seller_id=`user`.user_id and seller_status=3
+  </select>
+  <select id="selectSellerApply" resultMap="resultListSeller">
+  	select user_id,user_name,user_contactinfo,seller_addr,seller_sellinfo,seller_status from user,seller where `user`.user_is_seller=1 and seller_id=`user`.user_id and seller_status =2
+  </select>
+  <select id="selectSellerStatus" resultType="int" parameterType="long">
+  	select seller_status from seller where seller_id = #{sellerId}
+  </select>
+  <select id="selectSellerImgsrc" resultType="String" parameterType="long">
+  	select seller_imgsrc from seller where seller_id = #{sellerId}
+  </select>
+  <insert id="insertSeller"  parameterType="Seller" keyProperty="sellerId">
+  	INSERT INTO seller (seller_id,seller_addr,seller_imgsrc,seller_sellinfo,seller_status) VALUES(#{sellerId},#{sellerAddr},#{sellerImgsrc},#{sellerSellInfo},#{sellerStatus})
+  </insert>
+   <update id="updateSellerStatusAgreeById" parameterType="long" >
+  	UPDATE seller SET seller_status=3 WHERE seller_id = #{sellerId}
+  </update>
+   <update id="updateSellerStatusDisagreeById" parameterType="long" >
+  	UPDATE seller SET seller_status=0 WHERE seller_id = #{sellerId}
+  </update>
+</mapper>

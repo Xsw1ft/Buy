@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="cn.xswift.buy.mapper.IComplaintMapper">
+
+  <resultMap id="resultListComplaint" type="Complaint" >
+	<id column="complaint_id" property="complaintId"/>
+	<result column="commodity_id" property="commodityId"/>
+	<result column="complaint_content" property="complaintContent"/>
+	<result column="complaint_handle" property="complaintHandle"/>
+  </resultMap>
+  
+  <insert id="insertComplaint" useGeneratedKeys="true">
+    INSERT INTO complaint (commodity_id,complaint_content) VALUES(#{commodityId},#{content})
+  </insert>
+  <select id="selectComplaintUnhandle" resultMap="resultListComplaint">
+	select * from complaint where complaint_handle=''
+  </select>
+  <select id="selectComplaintHandle" resultMap="resultListComplaint">
+	select * from complaint where complaint_handle!=''
+  </select>
+  <update id="updateHandle">
+  	update complaint SET complaint_handle=#{complaintHandle} where complaint_id=#{complaintId}
+  </update>
+</mapper>

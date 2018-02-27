@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="cn.xswift.buy.mapper.ICommodityMapper">
+
+  <resultMap id="resultListCommmodity" type="Commodity" >
+	<id column="commodity_id" property="commodityId"/>
+	<result column="user_id" property="sellerId"/>
+	<result column="user_name" property="sellerName"/>
+	<result column="commodity_name" property="commodityName"/>
+	<result column="commodity_price" property="commodityPrice"/>
+	<result column="commodity_describe" property="commodityDescribe"/>
+	<result column="commodity_publishtime" property="commodityPublishtime"/>
+	<result column="commodity_htmlsrc" property="commodityHtmlsrc"/>
+	<result column="commodity_imgsrc" property="commodityImgsrc"/>
+	<result column="commodity_kind" property="commodityKind"/>
+	<result column="commodity_stock" property="commodityStock"/>
+  </resultMap>
+  
+  <select id="selectCommodityBySellerIdNotZero" parameterType="java.lang.Long" resultMap="resultListCommmodity">
+  	SELECT * from commodity where seller_id=#{sellerId} and commodity_stock!=0
+  </select>
+  <select id="selectCommodityBySellerId" parameterType="java.lang.Long" resultMap="resultListCommmodity">
+  	SELECT * from commodity where seller_id=#{sellerId}
+  </select>
+  <select id="selectCommodityNameById" parameterType="int" resultType="String">
+  	SELECT commodity_name from commodity where commodity_id=#{commodityId}
+  </select>
+  <select id="selectCommodityById" parameterType="int" resultType="Commodity">
+  	select commodity_name as commodityName,commodity_describe as commodityDescribe , commodity_price as commodityPrice , commodity_imgsrc as commodityImgsrc , commodity_htmlsrc as commodityHtmlsrc, commodity_stock as commodityStock,commodity_id as commodityId,seller_id as sellerId from commodity where commodity_id = #{commodityId}
+  </select>
+  
+  <insert id="insertCommodity" parameterType="Commodity" useGeneratedKeys="true" keyProperty="commodityId">
+    INSERT INTO commodity (seller_id,commodity_name,commodity_price,commodity_describe,commodity_publishtime,commodity_htmlsrc,commodity_imgsrc,commodity_stock,commodity_kind) VALUES(#{sellerId},#{commodityName},#{commodityPrice},#{commodityDescribe},#{commodityPublishtime},#{commodityHtmlsrc},#{commodityImgsrc},#{commodityStock},#{commodityKind})
+  </insert>
+  <update id="updateCommodityById" parameterType="Commodity">
+  	UPDATE commodity SET commodity_imgsrc=#{commodityImgsrc} ,commodity_htmlsrc=#{commodityHtmlsrc} WHERE commodity_id = #{commodityId}
+  </update>
+  <update id="updateStockMinusOneById" parameterType="int">
+  	update commodity SET commodity_stock = commodity_stock-1 where commodity_id=#{commodityId} and commodity_stock!=0
+  </update>
+  <update id="updateStockAnyNum" parameterType="int">
+  	update commodity SET commodity_stock = commodity_stock-#{tranNum} where commodity_id=#{commodityId} and commodity_stock!=0
+  </update>
+  <select id="selectCommodityNewPublish" resultMap="resultListCommmodity">
+  	select commodity_id,`user`.user_name,`user`.user_id,commodity_name,commodity_price,commodity_describe,commodity_publishtime,commodity_htmlsrc,commodity_imgsrc FROM commodity,`user` where `user`.user_id = commodity.seller_id and commodity_stock!=0 ORDER BY commodity_publishtime DESC LIMIT 2
+  </select>
+  <select id="selectCommodityByKind" resultMap="resultListCommmodity">
+  	select commodity_id,`user`.user_name,`user`.user_id,commodity_name,commodity_price,commodity_describe,commodity_publishtime,commodity_htmlsrc,commodity_imgsrc FROM commodity,`user` where `user`.user_id = commodity.seller_id and commodity_stock!=0 and commodity_kind=#{commodityKind}
+  </select>
+  <select id="selectSellerIdByCommodityId" parameterType="int" resultType="long">
+  	select seller_id from commodity where commodity_id = #{commodityId}
+  </select>
+  <select id="selectStockById" parameterType="int" resultType="int">
+  	select commodity_stock from commodity where commodity_id = #{commodityId}
+  </select>
+  <select id="selectForSearch" parameterType="String" resultMap="resultListCommmodity">
+  	select * from commodity  where commodity_name like CONCAT('%',#{commodityName},'%') and commodity_stock!=0
+  </select>
+  <select id="selectForSearchNum" parameterType="String" resultType="int">
+  	select count(*) from commodity  where commodity_name like CONCAT('%',#{commodityName},'%') and commodity_stock!=0
+  </select>
+  <delete id="deleteCommodityById" parameterType="int" >
+      delete from commodity where commodity_id=#{commodityId}
+  </delete>
+</mapper>

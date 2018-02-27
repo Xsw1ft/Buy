@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="cn.xswift.buy.mapper.ICartMapper">
+
+  <resultMap id="resultListCommmodity" type="Commodity" >
+	<id column="commodity_id" property="commodityId"/>
+	<result column="seller_id" property="sellerId"/>
+	<result column="user_name" property="sellerName"/>
+	<result column="commodity_name" property="commodityName"/>
+	<result column="commodity_price" property="commodityPrice"/>
+	<result column="commodity_describe" property="commodityDescribe"/>
+	<result column="commodity_stock" property="commodityStock"/>
+	<result column="commodity_publishtime" property="commodityPublishtime"/>
+	<result column="commodity_htmlsrc" property="commodityHtmlsrc"/>
+	<result column="commodity_imgsrc" property="commodityImgsrc"/>
+  </resultMap>
+  
+  <insert id="insertCart" useGeneratedKeys="true">
+    INSERT INTO cart (buyer_id,commodity_id) VALUES(#{buyerId},#{commodityId})
+  </insert>
+  
+  <select id="selectCartByBuyerId" resultMap="resultListCommmodity">
+	SELECT commodity.commodity_id,seller_id,`user`.user_name,commodity_name,commodity_price,commodity_describe,commodity_stock,commodity_publishtime,commodity_htmlsrc,commodity_imgsrc from  commodity ,cart,`user` where cart.buyer_id =#{buyerId}
+	and cart.commodity_id = commodity.commodity_id AND commodity.seller_id = `user`.user_id
+  </select>
+  <select id="selectHasAdded" resultType="int">
+  	select COUNT(*) from cart where buyer_id = #{buyerId} and commodity_id =#{commodityId}
+  </select>
+  <delete id="deleteCart">
+  	delete from cart where buyer_id=#{buyerId} and commodity_id =#{commodityId}
+  </delete>
+  
+</mapper>

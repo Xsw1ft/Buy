@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <typeAliases>
+  	<typeAlias type="cn.xswift.buy.entity.User" alias="User"/>
+  	<typeAlias type="cn.xswift.buy.entity.Commodity" alias="Commodity"/>
+  	<typeAlias type="cn.xswift.buy.entity.Seller" alias="Seller"/>
+  	<typeAlias type="cn.xswift.buy.entity.Transaction" alias="Transaction"/>
+  	<typeAlias type="cn.xswift.buy.entity.Complaint" alias="Complaint"/>
+  </typeAliases>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/buy?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull"/>
+        <property name="username" value="不给你看"/>
+        <property name="password" value="不给你看"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="cn/xswift/buy/mapper/UserMapper.xml"/>
+    <mapper resource="cn/xswift/buy/mapper/CommodityMapper.xml"/>
+    <mapper resource="cn/xswift/buy/mapper/CartMapper.xml"/>
+    <mapper resource="cn/xswift/buy/mapper/SellerMapper.xml"/>
+    <mapper resource="cn/xswift/buy/mapper/TransactionMapper.xml"/>
+    <mapper resource="cn/xswift/buy/mapper/ComplaintMapper.xml"/>
+  </mappers>
+</configuration>

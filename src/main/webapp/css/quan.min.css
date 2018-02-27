@@ -1,0 +1,739 @@
+body{
+	background-color: #F8F8FF;
+}
+
+a:link    {color: black;text-decoration: none;}
+a:visited {color: black;text-decoration: none;}
+a:hover   {color: black;text-decoration: none;}
+a:active  {color: black;text-decoration: none;}
+
+
+.quan_header{
+	background-color: white;
+	border-bottom: solid 1px #f6f6f6;
+	box-shadow: 1px 1px 1px #888888;
+	height: 50px;
+	text-align: center;
+}
+.quan_title{
+	font-size: large;
+	line-height: 50px;
+}
+.quan_search_partone{
+	position: absolute;
+	top: 0px;
+	background-color: white;
+	height: 25px;
+	text-align: center;
+	line-height: 24px;
+	width: 100%;
+}
+.quan_search_parttow{
+	position: absolute;
+	top: 25px;
+	background-color: white;
+	height: 24px;
+	text-align: center;
+	line-height: 24px;
+	width: 100%;
+}
+.quan_main{
+	position: absolute;
+	width:100%;
+	
+}
+.quan_main_my{
+	position: absolute;
+	width:100%;
+	height: 300px;
+}
+.quan_main_bottom{
+	width: 100%;
+	height: 50px;
+}
+.quan_header_search{
+	/*width: 70%;
+	float: none;  
+    display: block;  
+    margin-left: auto;  
+    margin-right: auto;  
+    background-color: white;
+    border: #FF6347;*/
+    position: absolute;
+    top: 3px;
+    right: 10px;
+    display: block;
+    border: 1px solid #1E90FF;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: white;
+    color: red;
+}
+.quan_banner_slider{
+	height: 150px;
+	width: 100%;
+	background-color: white;
+}
+.banner_div{
+	width: 100%;
+	height: 150px;
+}
+.quan_classify_div{
+	position: absolute;
+	top: 200;
+	height: 130px;
+	width: 100%;
+	background-color: white;
+}
+.quan_classify{
+	height: 120px;
+	width: 100%;
+	background-color: white;
+	position: absolute;
+	top: 10px;
+/*	/*
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);*/
+}
+.quan_ul{
+	width: 100%;
+	margin: 0;
+	list-style: none;
+	padding: 0;
+}
+.quan_li{
+	text-align: center;
+	float: left;
+	width: 33%;
+}
+.quan_classify_img{
+	float: none;  
+    display: block;  
+    margin-left: auto;  
+    margin-right: auto; 
+}
+.quan_classify_span{
+	float: none;  
+    display: block;  
+    margin-left: auto;  
+    margin-right: auto; 
+}
+.quan_new_publish_span{
+	color: #8A8A8A;
+}
+.quan_on_sell_span{
+	color: #1E90FF;
+}
+/*.quan_new_publish_ul{
+	width: 100%;
+	margin: 0;
+	list-style: none;
+	padding: 0;
+}
+.quan_new_publish_li{
+	text-align: inherit;
+	display: block;
+	border: solid 1px;
+	height: 120px;
+}*/
+/*.quan_new_publish_img_div{
+	width: 96px;
+	height: 96px;
+	position: relative;
+	left: 10px;
+	top: 10px;
+}*/
+.quan_index_main{
+	position: absolute;
+	top: 300px;
+	width: 100%;
+}
+.quan_commodity{
+	width: 100%;
+}
+.quan_commodity_div{
+	width: 100%;
+	height: 120px;
+	background-color: white;
+	
+}
+.quan_commodity_img{
+	width: 68px;
+	height: 68px;
+	position: relative;
+	top: 20px;
+}
+.quan_commodity_detail{
+	position: relative;
+	height: 120px;
+}
+.quan_commodity_name{
+	position: absolute;
+	top: 10px;
+	font-weight:bold;
+}
+.quan_commodity_price{
+	position: absolute;
+	top: 90px;
+	color: red;
+}
+.quan_commodity_describe{
+	position: absolute;
+	display: block;
+	top: 30px;
+}
+.quan_commodity_stock{
+	position: absolute;
+	top: 50px;
+	color: #636363;
+	left: 00px;
+}
+.quan_commodity_delete{
+	float: left;
+	position: absolute;
+	bottom: 8px;
+	right: 0px;
+}
+.quan_commodity_seller{
+	position: absolute;
+	top: 70px;
+	color: #4D4D4D;
+}
+.quan_commodity_count{
+	float: left;
+	position: absolute;
+	bottom: 3px;
+	right: 45px;
+	height: 30px;
+	width: 80px;
+}
+.quan_commodity_plus{
+	width: 24px;
+	height: 24px;
+}
+.quan_commodity_minus{
+	width: 24px;
+	height: 24px;
+}
+.quan_footer{
+	
+	float: left;
+	position: fixed;
+	bottom: 0px;
+	height: 50px;
+	background-color: white;
+	width: 100%;
+}
+.quan_footer_top_border{
+	border-top: solid 2px #1E90FF;
+}
+.quan_footer_home{
+	text-align: center;
+	display: block;
+	float: left;
+	width: 25%;
+	height: 60px;
+	color: black;
+}
+.quan_footer_shop{
+	text-align: center;
+	display: block;
+	float: left;
+	width: 25%;
+	height: 60px;
+	color: black;
+}
+.quan_footer_shopping_cart{
+	text-align: center;
+	display: block;
+	float: left;
+	width: 25%;
+	height: 60px;
+	color: black;
+}
+.quan_footer_my{
+	text-align: center;
+	display: block;
+	float: left;
+	width: 25%;
+	height: 60px;
+	color: black;
+}
+.quan_cart_footer{
+	position: fixed;
+	bottom: 50px;
+	height: 50px;
+	background-color: white;
+	width: 100%;
+	line-height: 50px;
+}
+.quan_cart_footer span{
+	position: absolute;
+	left: 20px;
+}
+.quan_cart_total{
+	position: absolute;
+	left: 10px;
+	top: 15px;
+}
+.quan_cart_pay{
+	line-height: 50px;
+	text-align: center;
+	display: block;
+	background-color: #1E90FF;
+	color: white;
+	height: 50px;
+	width: 20%;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	border:none;
+}
+.quan_shop{
+	width: 100%;
+}
+.quan_shop_div{
+	width: 100%;
+	height: 120px;
+	background-color: white;
+}
+.quan_shop_img{
+	width: 96px;
+	height: 96px;
+	position: relative;
+	left: 10px;
+	top: 10px;
+}
+.quan_shop_shopname{
+	position: absolute;
+	top: 10px;
+	left: 120px;
+	
+}
+.quan_shop_mainsell{
+	position: absolute;
+	top: 90px;
+	left: 120px;
+}
+.quan_shop_right{
+	position: relative;
+	top: -96px;
+	height: 120px;
+}
+.quan_shop_main_top{
+	background: white;
+	width: 100%;
+	height: 50px;
+	border-bottom: solid #1E90FF 1px ;
+}
+.quan_shop_main_top_1{
+	background: white;
+	width: 100%;
+	height: 140px;
+	border-bottom: solid #1E90FF 1px ;
+}
+.quan_shop_main_top_simple{
+	position: absolute;
+	top: 0px;
+	line-height: 50px;
+	background: white;
+	width: 100%;
+	height: 50px;
+	text-align: center;
+	border-bottom: solid #1E90FF 1px ;
+	z-index: 3;
+}
+.quan_shop_main_img{
+	width: 50px;
+	height: 50px;
+	position: relative;
+	left: 10px;
+	top: 10px;
+}
+.quan_shop_main_detail{
+	position: relative;
+	top: -96px;
+	height: 120px;
+}
+.quan_shop_main_shopname{
+	position: absolute;
+	top: 10px;
+	left: 120px;
+	font-weight: bold;
+}
+.quan_shop_main_domain{
+	position: absolute;
+	top: 35px;
+	left: 120px;
+}
+.quan_shop_main_addr{
+	position: absolute;
+	top: 60px;
+	left: 120px;
+}
+.quan_shop_main_tel{
+	position: absolute;
+	top: 85px;
+	left: 120px;
+}
+.quan_shop_main_down{
+	color:#1E90FF ;
+	position: absolute;
+	right: 20px;
+	z-index: 10;
+}
+.quan_shop_main_up{
+	color:#1E90FF ;
+	position: absolute;
+	top: 112px;
+	width: 40px;
+}
+.quan_shop_main_commodity{
+	width: 100%;
+	background-color: white;
+}
+.quan_my_nologin{
+ 	 text-align: center;
+    background-color: #fff;
+    border-radius: 20px;
+    position: absolute;
+    height: 210px;
+    top: 80px;
+}
+.quan_my_list{
+	position: absolute;
+	width: 100%;
+}
+.quan_my_userinfo{
+	position: absolute;
+	top: 10px;
+	border-bottom: solid 1px;
+	border-top: solid 1px;
+	background-color: white;
+	border-bottom-color: #F0F0F0;
+	border-top-color: #F0F0F0;
+	height: 80px;
+	width: 100%;
+}
+.quan_my_userinfo_detail{
+	height: 80px;
+	border-left: solid 1px #f0f0f0;
+}
+.quan_my_userinfo_headimg{
+	height: 80px;
+}
+.quan_my_userinfo_username{
+	position: absolute;
+	top: 10px;
+	left: 20px;
+}
+.quan_my_usermoney{
+	position: absolute;
+	top: 100px;
+	border-bottom: solid 1px;
+	border-top: solid 1px;
+	background-color: white;
+	border-bottom-color: #F0F0F0;
+	border-top-color: #F0F0F0;
+	height: 34px;
+	width: 100%;
+	line-height: 34px;
+}
+.quan_my_transactions{
+	position: absolute;
+	top: 140px;
+	border-bottom: solid 1px;
+	border-top: solid 1px;
+	background-color: white;
+	border-bottom-color: #F0F0F0;
+	border-top-color: #F0F0F0;
+	height: 34px;
+	width: 100%;
+	line-height: 34px;
+}
+.quan_my_messagebox{
+	position: absolute;
+	top: 180px;
+	border-bottom: solid 1px;
+	border-top: solid 1px;
+	background-color: white;
+	border-bottom-color: #F0F0F0;
+	border-top-color: #F0F0F0;
+	height: 34px;
+	width: 100%;
+	line-height: 34px;
+}
+.quan_my_usermoney span{
+	position: absolute;
+	left: 20px;
+}
+.quan_my_publish{
+	position: absolute;
+	top: 220px;
+	border-bottom: solid 1px;
+	border-top: solid 1px;
+	background-color: white;
+	border-bottom-color: #F0F0F0;
+	border-top-color: #F0F0F0;
+	height: 34px;
+	width: 100%;
+}
+.quan_my_logout{
+	position: fixed;
+	bottom: 60px;
+	border-bottom: solid 1px;
+	border-top: solid 1px;
+	background-color: white;
+	border-bottom-color: #F0F0F0;
+	border-top-color: #F0F0F0;
+	height: 34px;
+	width: 100%;
+}
+.quan_pay_top{
+	position: absolute;
+	top: 0px;
+	height: 60px;
+	width: 100%;
+	background: white;
+	box-shadow: 1px 1px 1px #888888;
+}
+.quan_pay_top_buyer{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+.quan_pay_top_addr{
+	position: absolute;
+	top: 30px;
+	left: 10px;
+}
+.quan_pay_top_contact{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+.quan_pay_commodity{
+	position: absolute;
+	top: 70px;
+	width: 100%;
+}
+.quan_pay_commodity_div{
+	height: 220px;
+	width: 100%;
+	
+}
+.quan_pay_commodity_div_shopname{
+	position: relative;
+	top: 0px;
+	height: 20px;
+	line-height: 20px;
+	width: 100%;
+	display: block;
+	color: white;
+	background: #1E90FF;
+	text-align: center;
+}
+.quan_commodity_div_pay{
+	position: relative;
+	width: 100%;
+	height: 90px;
+	background-color: white;
+	
+}
+.quan_commodity_img_pay{
+	width: 68px;
+	height: 68px;
+	position: relative;
+	top: 10px;
+}
+.quan_commodity_detail_pay{
+	position: relative;
+	height: 90px;
+}
+.quan_commodity_name_pay{
+	position: absolute;
+	top: 8px;
+	font-weight:bold;
+}
+.quan_commodity_price_pay{
+	position: absolute;
+	top: 65px;
+	color: red;
+}
+.quan_commodity_select_pay{
+	position: absolute;
+	top: 65px;
+	right: 10px;
+	color: red;
+}
+.quan_commodity_describe_pay{
+	position: absolute;
+	display: block;
+	top: 26px;
+}
+.quan_pay_commodity_div_xiaoji{
+	position: relative;
+	top: 0px;
+	height: 20px;
+	line-height: 20px;
+	width: 100%;
+	display: block;
+	color: #1E90FF;
+	background: white;
+	text-align: center;
+	border-bottom: 1px #1E90FF solid;
+}
+.quan_pay_footer{
+	position: fixed;
+	bottom: 50px;
+	height: 50px;
+	background-color: white;
+	width: 100%;
+	line-height: 50px;
+}
+.quan_pay_submit{
+	position: absolute;
+	top: 0px;
+	height: 50px;
+	right: 0px;
+	display: block;
+	background: #1E90FF;
+	width: 90px;
+	text-align: center;
+	color: white;
+}
+.quan_pay_total{
+	position: absolute;
+	top: 0px;
+	height: 50px;
+	right: 90px;
+	width: 90px;
+	color: red;
+}
+.quan_tran_main{
+	position: absolute;
+	top: 50px;
+	width: 100%;
+}
+.quan_tran_div{
+	width: 100%;
+	margin-top: 12px;
+	height: 60px;
+	background-color: white;
+}
+.quan_tran_commodity{
+	position: relative;
+	background-color: #F0F0F0;
+	height: 60px;
+	width: 100%;
+}
+.quan_tran_commodity_describe{
+	position: absolute;
+	top: 20px;
+	left: 60px;
+}
+.quan_tran_commodity_img{
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	top: 5px;
+	left: 5px;
+}
+.quan_tran_commodity_name{
+	position: absolute;
+	top: 2px;
+	left: 60px;
+}
+.quan_tran_commodity_href{
+	position: absolute;
+	top: 38px;
+	left: 60px;
+}
+.quan_tran_commodity_href font{
+	text-decoration: underline;
+}
+.quan_tran_commodity_price{
+	position: absolute;
+	top: 2px;
+	right: 10px;
+}
+.quan_tran_commodity_detail{
+	position: absolute;
+	top: 38px;
+	right: 10px;
+	color: #1E90FF;
+}
+.quan_tran_bot{
+	position: relative;
+	width: 100%;
+	height: 210px;
+}
+.quan_tran_id{
+	position: absolute;
+	top: 150px;
+	left: 10px;
+}
+.quan_tran_mode{
+	position: absolute;
+	top: 70px;
+	left: 10px;
+}
+.quan_tran_money{
+	position: absolute;
+	top: 50px;
+	left: 10px;
+}
+.quan_tran_num{position: absolute;
+	top: 30px;
+	left: 10px;}
+.quan_tran_seller{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+.quan_tran_words{
+	position: absolute;
+	top: 90px;
+	left: 10px;}
+.quan_tran_paytime{
+	position: absolute;
+	top: 130px;
+	left: 10px;
+}
+.quan_tran_finish{
+	position: absolute;
+	top: 175px;
+	left: 10px;
+}
+.quan_tran_tui{
+	position: absolute;
+	top: 175px;
+	left: 90px;
+}
+.quan_edit_bot{
+	position: relative;
+	width: 100%;
+	height: 70px;
+}
+.quan_edit_edit{
+	position: absolute;
+	top: 30px;
+	left: 5px;
+}
+.quan_edit_cancel{
+	position: absolute;
+	top: 30px;
+	left: 85px;
+}
+.quan_edit_stock{
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+.quan_err{
+	position: fixed;
+	top:0px;
+	width: 100%;
+}

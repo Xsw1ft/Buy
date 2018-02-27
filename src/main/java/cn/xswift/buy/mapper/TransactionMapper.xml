@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="cn.xswift.buy.mapper.ITransactionMapper">
+
+  <resultMap id="resultListTransaction" type="Transaction" >
+	<id column="transaction_id" property="transactionId"/>
+	<result column="transaction_buyerid" property="transactionBuyerId"/>
+	<result column="transaction_sellerid" property="transactionSellerId"/>
+	<result column="commodity_id" property="commodityId"/>
+	<result column="transaction_num" property="transactionNum"/>
+	<result column="transaction_paytime" property="transactionPaytime"/>
+	<result column="transaction_finishtime" property="transactionFinishtime"/>
+	<result column="transaction_mode" property="transactionMode"/>
+	<result column="transaction_words" property="transactionWords"/>
+  </resultMap>
+  
+  <select id="selectTransactionByBuyerId" resultMap="resultListTransaction" parameterType="long">
+    select * from `transaction` WHERE transaction_buyerid=#{buyerId}
+  </select>
+  <select id="selectTransactionBySellerId" resultMap="resultListTransaction" parameterType="long">
+    select * from `transaction` WHERE transaction_sellerid=#{sellerId}
+  </select>
+  
+  <insert id="insertTransaction" useGeneratedKeys="true" keyProperty="transactionId" parameterType="Transaction">
+    INSERT INTO `transaction` (`transaction`.transaction_buyerid,`transaction`.transaction_sellerid,`transaction`.commodity_id,`transaction`.transaction_num,`transaction`.transaction_paytime,`transaction`.transaction_mode,`transaction`.transaction_words) VALUES(#{transactionBuyerId},#{transactionSellerId},#{commodityId},#{transactionNum},#{transactionPaytime},#{transactionMode},#{transactionWords})
+  </insert>
+  <update id="updateFinishtimeById">
+  	UPDATE transaction SET transaction_finishtime=#{transactionFinishtime} where transaction_id=#{transactionId}
+  </update>
+</mapper>

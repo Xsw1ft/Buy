@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       					   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+       					   http://www.springframework.org/schema/context
+       					   http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       					   http://www.springframework.org/schema/mvc 
+       					   http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+	<context:component-scan base-package="cn.xswift.buy" />
+	<context:annotation-config />
+	<mvc:annotation-driven />
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- 该 BeanPostProcessor 将自动对标注 @Autowired 的 Bean 进行注入 -->     
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>  
+	<!--配置bean,配置后该类由spring管理--> 
+   
+   
+    <!-- controller -->
+	<bean name="userController" class="cn.xswift.buy.controller.UserController"> </bean> 
+    <bean name="cartController" class="cn.xswift.buy.controller.CartController"> </bean> 
+    <bean name="commodityController" class="cn.xswift.buy.controller.CommodityController"> </bean> 
+    <bean name="sellerController" class="cn.xswift.buy.controller.SellerController"> </bean> 
+    
+   	<!-- service -->
+   	<bean name="userService" class="cn.xswift.buy.service.UserService"> </bean> 
+   	<bean name="commodityService" class="cn.xswift.buy.service.CommodityService"> </bean>
+   	<bean name="sellerService" class="cn.xswift.buy.service.SellerService"> </bean>
+   	<bean name="cartService" class="cn.xswift.buy.service.CartService"> </bean>
+   	
+   	<!-- dao -->
+   	<bean name="cartMapper" class="cn.xswift.buy.dao.CartMapper"> </bean> 
+	<bean name="commodityMapper" class="cn.xswift.buy.dao.CommodityMapper"> </bean>
+	<bean name="sellerMapper" class="cn.xswift.buy.dao.SellerMapper"> </bean>
+	<bean name="transactionMapper" class="cn.xswift.buy.dao.TransactionMapper"> </bean>
+	<bean name="userMapper" class="cn.xswift.buy.dao.UserMapper"> </bean>
+	
+   	<!-- utils -->
+	<bean name="aar" class="cn.xswift.buy.utils.AlertAndResponse"> </bean> 
+	<bean name="cookieC" class="cn.xswift.buy.utils.CookieC"> </bean> 
+	<bean name="checkLogin" class="cn.xswift.buy.utils.CheckLogin"> </bean> 
+	<bean name="loginList" class="cn.xswift.buy.utils.LoginList"> </bean> 
+	<bean name="sellerRegist" class="cn.xswift.buy.utils.SellerRegist"> </bean> 
+	
+	<!-- 配置拦截器 -->
+	<mvc:interceptors>
+		<!-- 登录拦截器。 多个拦截器，顺序执行。 -->
+		<mvc:interceptor>
+			<!-- /** 表示所有的url，包括子url路径 -->
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/my.do"/>
+			<mvc:exclude-mapping path="/login.do"/>
+			<mvc:exclude-mapping path="/sellerapplylist.do"/>
+			<mvc:exclude-mapping path="/agreeSeller.do"/>
+			<mvc:exclude-mapping path="/sellerregist.do"/>
+			<mvc:exclude-mapping path="/sellerlogin.do"/>
+			<mvc:exclude-mapping path="/getSellerApplyInfo.do"/>
+			<bean class="cn.xswift.buy.interceptor.SecureValidInterceptor"></bean>
+		</mvc:interceptor>
+		<!-- <mvc:interceptor>
+			/** 表示所有的url，包括子url路径
+			<mvc:mapping path="/buy/seller/*.do" />
+			<bean class="cn.xswift.buy.interceptor.SellerInterceptor"></bean>
+		</mvc:interceptor> -->
+	</mvc:interceptors>
+	
+	<!-- 配置spring的PlatformTransactionManager，名字为默认值 -->  
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+        <property name="dataSource" ref="dataSource" />  
+    </bean>  
+      
+    <!-- 开启事务控制的注解支持 -->  
+    <tx:annotation-driven transaction-manager="transactionManager"/></span></span>  
+</beans>
